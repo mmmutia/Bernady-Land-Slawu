@@ -1,4 +1,4 @@
-<?php  
+<?php
 // require('koneksi.php');
 session_start();
 error_reporting(0);
@@ -46,7 +46,7 @@ $userName = $_SESSION['name'];
 
 <body>
   @include('partials.navbar')
- 
+
   @yield('isi')
 
   <!-- ======= Footer ======= -->
@@ -75,7 +75,7 @@ $userName = $_SESSION['name'];
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Link</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/">Beranda</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/homeuser">Beranda</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/about">Tentang</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/services">Layanan</a></li>
             </ul>

@@ -1,18 +1,3 @@
-<?php
-// require('koneksi.php');
-if( isset($_POST['register']) ){
-    $userMail = $_POST['txt_email'];
-    $userPass = $_POST['txt_pass'];
-    $userName = $_POST['txt_nama'];
-
-    $query = "INSERT INTO user_detail(id_user, user_email, user_password, user_fullname, level) VALUES ('', '$userMail', '$userPass', '$userName', 4)";
-    $result = mysqli_query($koneksi, $query);
-    header('Location: login.php');
-    if($saved) header("Location: login.php");
-   
-}
-?>
-
 <!<!DOCTYPE html>
 <html lang="en">
     <title>Register-Bernady Land Slawu</title>
@@ -32,18 +17,19 @@ if( isset($_POST['register']) ){
 		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-            <form class="user" action="register.php" method="POST">        
-            <div class="form-group">
+            <form class="user" action="/register" method="POST">  
+                @csrf      
+            <div class="form-group" >
                 <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                placeholder="Email Address" name="txt_email">
+                placeholder="Email Address"  name="email">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                placeholder="Password" name="txt_pass">
+                placeholder="Password" name="password">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                placeholder="Username" name="txt_nama">
+                placeholder="Username" name="name">
             </div>
                 <button type="submit" name="register" class="btn btn-primary btn-user btn-block">Register</button>
             </form>

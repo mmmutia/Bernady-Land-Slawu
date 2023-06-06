@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +18,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', [
+    return view('homeuser', [
         "title" => "Bernady Land Slawu"
     ]);
 });
+
+Route::get('/login', function () {
+    LoginController::cek_user();
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    RegisterController::cek_user();
+    return view('auth.register');
+})->name('register');
 
 Route::get('/about', function () {
     return view('about',[
@@ -49,14 +63,17 @@ Route::get('/contact', function () {
     ]);
 });
 
-Route::get('/login', function () {
-    return view('registration/login', [
-        "title" => "Login - Bernady Land Slawu"
-    ]);
-});
 
-Route::get('/register', function () {
-    return view('registration/register', [
-        "title" => "Register - Bernady Land Slawu"
-    ]);
-});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+

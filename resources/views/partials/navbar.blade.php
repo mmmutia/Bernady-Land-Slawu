@@ -9,7 +9,7 @@
       </div>
 
       <nav id="navbar" class="navbar">
-      
+
                   <ul>
                   <li><a class=" {{ ($title === 'Beranda') ? 'active' : ''}}" href="/">Beranda</a></li>
                   <li><a class=" {{ ($title === 'Tentang') ? 'active' : ''}}" href="/about">Tentang</a></li>
@@ -19,34 +19,32 @@
                   <li><a class=" {{ ($title === 'Kontak') ? 'active' : ''}}" href="/contact">Kontak</a></li>
                   <?php
 
-if($userName = $_SESSION['name']){
-  
-  echo "
-  <div class='dropdown' style='margin-right:50px;><a href='#'> 
+          if($userName = $_SESSION['name']){
+
+            echo "
+          <div class='dropdown' style='margin-right:70px;><a href='#'>
           <a href='#' style='text-decoration: none; color: white;'>
-            <img src='img/logo_orang.png' alt='Logo Orang' style='width: 20px; height: 20px; margin-right: 5px; display: inline-block;'>
+            <img src='img/logo_orang.png' alt='Logo Orang' style='width: 35px; height: 35px; margin-right: 15px; display: inline-block;'>
             <span style='font-size: 14px; display: inline-block;'>$userName</span>
           </a>
           <ul>
-      <li> <a href='layout/profile-user'>Profil</a></li>
-      <li> <a href='layout/list-pemesanan'>Pemesanan Rumah</a></li>
-      <li> <a href='layout/pembayaran'>Pembayaran</a></li>
-      <li> <a href='layout/progres-user'>Proggres</a></li>
-      <li> <a href='layout/cluster-tersimpan'>Cluster Tersimpan</a></li>
-      <li data-bs-toggle='modal' data-bs-target='#modalLogout'> <a href='javascript:void(0)'>Logout</a></li>
-    </ul>
-  </div>
-  ";
+                <li> <a href='profile-user.php'>Profil</a></li>
+                <li> <a href='list-pemesanan.php'>Pemesanan Rumah</a></li>
+                <li> <a href='pembayaran-customer.php'>Pembayaran</a></li>
+                <li> <a href='proggres_user.php'>Proggres</a></li>
+                <li> <a href='daftar-cluster-tersimpan.php'>Cluster Tersimpan</a></li>
+                <li data-bs-toggle='modal' data-bs-target='#modalLogout'> <a href='javascript:void(0)'>Logout</a></li>
+              </ul>
+            </div>
+            ";
 
+          }else{
+            echo "
+            <li><a href='/login'>Login</a></li>
+            ";
+          }
 
-}else{
-  echo "
-  <li><a href='/login'>Login</a></li>
-  ";
-}
-
-?>
-
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
