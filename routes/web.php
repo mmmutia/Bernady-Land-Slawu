@@ -23,6 +23,12 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/homeuser', function () {
+    return view('homeuser', [
+        "title" => "Bernady Land Slawu"
+    ]);
+});
+
 Route::get('/login', function () {
     LoginController::cek_user();
     return view('auth.login');

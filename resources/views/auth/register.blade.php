@@ -10,7 +10,7 @@
             <form class="user" action="{{ route('register') }}" method="POST">
                 @csrf
             <div class="form-group" >
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address"value="{{ old('email') }}" required autocomplete="email">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" value="{{ old('email') }}" required autocomplete="email">
 
                 @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password"required autocomplete="new-password">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -28,13 +28,17 @@
                 @enderror
             </div>
             <div class="form-group">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
             </div>
                 <button type="submit" name="register" class="btn btn-primary btn-user btn-block">{{ __('Register') }}</button>
             </form>
