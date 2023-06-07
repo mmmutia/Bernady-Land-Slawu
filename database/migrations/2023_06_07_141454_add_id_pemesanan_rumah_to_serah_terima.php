@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('spesifikasi_teknis', function (Blueprint $table) {
-            $table->foreignID('id_cluster')->references('id_cluster')->on('cluster')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::table('serah_terima', function (Blueprint $table) {
+            $table->foreignID('id_pemesanan_rumah')->after("id")->references('id')->on('pemesanan_rumah')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -25,9 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('spesifikasi_teknis', function (Blueprint $table) {
-            $table->dropForeign(['id_cluster']);
-            $table->dropColumn('id_cluster');
+        Schema::table('serah_terima', function (Blueprint $table) {
+            $table->dropForeign(['id_pemesanan_rumah']);
+            $table->dropColumn('id_pemesanan_rumah');
         });
     }
 };

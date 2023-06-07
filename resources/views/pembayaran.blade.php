@@ -1,18 +1,7 @@
 @extends('layout.master')
 
+@section('title', '- Pembayaran')
 @section('isi')
-<?php
-// require ('koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$id_pemesanan_rumah = $_SESSION['id_pemesanan_rumah'];
-$id_pembayaran_dp = $_SESSION['id_pembayaran_dp'];
-$SesLvl = $_SESSION['level'];
-
-$query_mysql = mysqli_query($koneksi,"select * from pembayaran_dp where id_pembayaran_dp = '$id_pembayaran_dp'");
-$data = mysqli_fetch_array($query_mysql);
-?>
  <main id="main">
 
 
@@ -72,7 +61,7 @@ $data = mysqli_fetch_array($query_mysql);
         2 days ago
       </div>
     </div>
-    
+
   </div>
 
 </section>
@@ -94,7 +83,7 @@ $data = mysqli_fetch_array($query_mysql);
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
               <?php
-             
+
               $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
               while ($row = mysqli_fetch_array($query)) {
                 echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
@@ -111,12 +100,12 @@ $data = mysqli_fetch_array($query_mysql);
 
 
             <input type="date" class="form-control" name="tgl_pembayaran_dp" required>
-            
+
             </select>
 
           </div>
 
-         
+
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran DP</label>
             <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="foto" required>
@@ -254,7 +243,7 @@ $data = mysqli_fetch_array($query_mysql);
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
               <?php
-             
+
               $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
               while ($row = mysqli_fetch_array($query)) {
                 echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
@@ -271,12 +260,12 @@ $data = mysqli_fetch_array($query_mysql);
 
 
             <input type="date" class="form-control" name="tgl_pembayaran_dp" required>
-            
+
             </select>
 
           </div>
 
-         
+
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran DP</label>
             <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="foto" required>
@@ -416,7 +405,7 @@ $data = mysqli_fetch_array($query_mysql);
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
               <?php
-             
+
               $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
               while ($row = mysqli_fetch_array($query)) {
                 echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
@@ -433,12 +422,12 @@ $data = mysqli_fetch_array($query_mysql);
 
 
             <input type="date" class="form-control" name="tgl_pembayaran_inhouse" required>
-            
+
             </select>
 
           </div>
 
-         
+
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran Inhouse</label>
             <input type="file" class="form-control" id="bukti_pembayaran_inhouse" name="bukti_pembayaran_inhouse" id="foto" required>

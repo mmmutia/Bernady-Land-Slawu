@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cluster', function (Blueprint $table) {
-            $table->id('id_cluster');
+            $table->id();
             $table->char('foto_cluster');
-            $table->char('nama_cluster');
-            $table->char('blok');
+            $table->string('nama_cluster');
+            $table->string('blok');
             $table->integer('jumlah_unit');
-            $table->char('harga');
-            $table->char('harga_dp');
-            $table->char('filter');
-            $table->char('jenis_cluster');
+            $table->string('harga');
+            $table->string('harga_dp');
+            $table->string('filter');
+            $table->string('jenis_cluster');
             $table->timestamps();
         });
     }

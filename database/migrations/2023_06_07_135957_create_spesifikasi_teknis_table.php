@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('spesifikasi_teknis', function (Blueprint $table) {
-            $table->id('id_spesifikasi');
-            // $table->id('id_cluster');
+            $table->id();
             $table->string('pondasi');
             $table->string('dinding');
             $table->string('rangka_atap');

@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pembayaran_dp', function (Blueprint $table) {
-            $table->id('id_pembayaran_dp');
-            // $table->id('id_pemesanan_rumah');
-            $table->date('tgl_pembayaran_dp');
-            $table->char('bukti_pembayaran_dp');
-            $table->char('status_dp');
-            $table->timestamps();
+        Schema::table('spesifikasi_teknis', function (Blueprint $table) {
+            $table->foreignID('id_cluster')->after("id")->references('id')->on('cluster')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -30,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembayaran_dp');
+        Schema::table('spesifikasi_teknis', function (Blueprint $table) {
+            $table->dropForeign(['id_cluster']);
+            $table->dropColumn('id_cluster');
+        });
     }
 };

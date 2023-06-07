@@ -10,12 +10,12 @@
 
       <nav id="navbar" class="navbar">
                   <ul>
-                  <li><a class=" {{ ($title === 'Beranda') ? 'active' : ''}}" href="/">Beranda</a></li>
-                  <li><a class=" {{ ($title === 'Tentang') ? 'active' : ''}}" href="/about">Tentang</a></li>
-                  <li><a class=" {{ ($title === 'Layanan') ? 'active' : ''}}" href="/services">Layanan</a></li>
-                  <li><a class=" {{ ($title === 'Cluster') ? 'active' : ''}}" href="/portofolio">Cluster</a></li>
-                  <li><a class=" {{ ($title === 'Tim') ? 'active' : ''}}" href="/team">Tim</a></li>
-                  <li><a class=" {{ ($title === 'Kontak') ? 'active' : ''}}" href="/contact">Kontak</a></li>
+                  <li><a href="/">Beranda</a></li>
+                  <li><a href="/about">Tentang</a></li>
+                  <li><a href="/services">Layanan</a></li>
+                  <li><a href="/portofolio">Cluster</a></li>
+                  <li><a href="/team">Tim</a></li>
+                  <li><a href="/contact">Kontak</a></li>
 
                   @if ((auth()->user()))
           <div class='dropdown' style='margin-right:70px;><a href='#'>

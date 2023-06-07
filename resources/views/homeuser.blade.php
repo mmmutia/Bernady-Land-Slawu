@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Beranda')
 @section('isi')
 
 <!-- ======= Hero Section ======= -->

@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('proggres', function (Blueprint $table) {
-            $table->foreignID('id_user')->references('id_user')->on('user_detail')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::create('serah_terima', function (Blueprint $table) {
+            $table->id();
+            $table->string('no_surat_bangunan');
+            $table->timestamps();
         });
     }
 
@@ -25,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('proggres', function (Blueprint $table) {
-            $table->dropForeign(['id_user']);
-            $table->dropColumn('id_user');
-        });
+        Schema::dropIfExists('serah_terima');
     }
 };

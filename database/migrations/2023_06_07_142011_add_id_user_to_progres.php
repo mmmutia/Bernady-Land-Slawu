@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('serah_terima', function (Blueprint $table) {
-            $table->id('id_serah_terima');
-            // $table->id('id_pemesanan_rumah');
-            $table->char('no_surat_bangunan');
-            $table->timestamps();
+        Schema::table('progres', function (Blueprint $table) {
+            $table->foreignID('id_user')->after("id_pemesanan_rumah")->references('id')->on('users')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -28,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('serah_terima');
+        Schema::table('progres', function (Blueprint $table) {
+            $table->dropForeign(['id_user']);
+            $table->dropColumn('id_user');
+        });
     }
 };

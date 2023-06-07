@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Pemesanan')
 @section('isi')
 <?php
 // require ('koneksi.php');
@@ -53,7 +53,7 @@ if (isset($_POST['hapus'])) {
   <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th>No</th>    
+            <th>No</th>
             <th>ID Pemesanan Rumah</th>
             <th>Nama Pemesan</th>
             <th>Alamat</th>
@@ -70,7 +70,7 @@ if (isset($_POST['hapus'])) {
     <?php
     $query2 = "SELECT * FROM detail_pemesanan JOIN pemesanan_rumah ON detail_pemesanan.id_pemesanan_rumah = pemesanan_rumah.id_pemesanan_rumah JOIN serah_terima ON pemesanan_rumah.id_pemesanan_rumah = serah_terima.id_pemesanan_rumah  WHERE pemesanan_rumah.id_user = '$id_user'";
     $result = mysqli_query($koneksi,$query2);
-    $no=1;   
+    $no=1;
     while($row = mysqli_fetch_array($result)){
     ?>
     <tr class="text-center">
@@ -89,7 +89,7 @@ if (isset($_POST['hapus'])) {
         <?php
       }
       ?>
-        
+
     </tbody>
 </table>
 </div>
@@ -102,6 +102,6 @@ if (isset($_POST['hapus'])) {
 </script>
 <!-- </section>End Contact Section -->
 
-</main> 
+</main>
 <!-- End #main -->
 @endsection

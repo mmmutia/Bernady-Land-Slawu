@@ -1,7 +1,8 @@
 @extends('layout.master')
 
+@section('title', '- Tim')
 @section('isi')
-<?php  
+<?php
 // require('koneksi.php');
 session_start();
 error_reporting(0);

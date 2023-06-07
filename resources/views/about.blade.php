@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Tentang')
 @section('isi')
 <main id="main">
 

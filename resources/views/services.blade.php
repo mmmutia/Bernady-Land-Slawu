@@ -1,14 +1,7 @@
 @extends('layout.master')
 
+@section('title', '- Layanan')
 @section('isi')
-<?php  
-// require('koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-
-?>
 <main id="main">
 
 <!-- ======= Our Services Section ======= -->

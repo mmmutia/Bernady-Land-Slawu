@@ -1,8 +1,8 @@
 @extends('layout.master')
 
-
+@section('title', '- Cluster')
 @section('isi')
-<?php  
+<?php
 // require('koneksi.php');
 session_start();
 error_reporting(0);
@@ -38,7 +38,7 @@ $query_mysql = mysqli_query("select * from cluster");
 
     <div class="col-lg-6">
     <form action="portfolio.php" method="GET">
-        <input type="text" name="cari"> 
+        <input type="text" name="cari">
         <input type="submit" value="Search">
         </form>
       </div>
@@ -46,12 +46,12 @@ $query_mysql = mysqli_query("select * from cluster");
   </div>
 </div>
 
-<?php 
+<?php
 if(isset($_GET['cari'])){
 $cari = $_GET['cari'];
-$query_mysql = mysqli_query("select * from cluster where nama_cluster like '%".$cari."%'");				
+$query_mysql = mysqli_query("select * from cluster where nama_cluster like '%".$cari."%'");
 }else{
-$query_mysql = mysqli_query("select * from cluster");		
+$query_mysql = mysqli_query("select * from cluster");
 }
 ?>
 

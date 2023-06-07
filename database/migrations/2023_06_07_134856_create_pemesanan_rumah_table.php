@@ -14,17 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pemesanan_rumah', function (Blueprint $table) {
-            $table->id('id_pemesanan_rumah');
-            $table->char('nama_pemesan');
-            $table->char('alamat');
-            $table->char('no_telp_pemesan');
-            // $table->id('id_cluster');
+            $table->id();
+            $table->string('nama_pemesan');
+            $table->string('alamat');
+            $table->string('no_telp');
             $table->date('tgl_pemesanan');
-            $table->char('fotocopy_ktp');
-            $table->char('jenis_pembayaran');
-            $table->integer('jml_cicilan_dp');
-            $table->integer('jml_cicilan_inhouse');
-            // $table->id('id_user');
+            $table->string('fc_ktp');
+            $table->string('jenis_pembayaran');
+            $table->string('jumlah_cicilan_dp');
+            $table->string('jumlah_cicilan_inhouse');
             $table->timestamps();
         });
     }

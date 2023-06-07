@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Cluster Tersimpan')
 @section('isi')
 <?php
 // require('koneksi.php');

@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role',['user','adminkonten','adminkeuangan','pemilik'])->default('user');
+        Schema::create('detail_pemesanan', function (Blueprint $table) {
+            $table->id();
+            $table->string('detail_blok');
+            $table->string('jumlah_dp');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('detail_pemesanan');
     }
 };

@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Profil')
 @section('isi')
 <?php
 // require ('koneksi.php');

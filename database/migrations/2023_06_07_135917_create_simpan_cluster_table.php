@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('simpan_cluster', function (Blueprint $table) {
-            $table->foreignID('id_cluster')->references('id_cluster')->on('cluster')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::create('simpan_cluster', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,9 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('simpan_cluster', function (Blueprint $table) {
-            $table->dropForeign(['id_cluster']);
-            $table->dropColumn('id_cluster');
-        });
+        Schema::dropIfExists('simpan_cluster');
     }
 };

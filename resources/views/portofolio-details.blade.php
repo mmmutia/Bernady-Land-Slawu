@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-
+@section('title', '- Detail Cluster')
 @section('isi')
 <?php
 // require('koneksi.php');
@@ -40,7 +40,7 @@ if (isset($_POST['hapus'])) {
   $Id_user = $data['id_user'];
     $query1 = mysqli_query($koneksi,"DELETE FROM simpan_cluster WHERE id_simpan='$id_simpan'") or die(mysqli_error($koneksi));
     header("location:daftar-cluster-tersimpan.php");
-    // $result = mysqli_query($koneksi, $query1); 
+    // $result = mysqli_query($koneksi, $query1);
 }
 
 ?>

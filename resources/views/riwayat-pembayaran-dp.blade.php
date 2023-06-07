@@ -1,34 +1,7 @@
 @extends('layout.master')
 
+@section('title', '- Riwayat Pembayaran DP')
 @section('isi')
-<?php
-require ('koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$id_pemesanan_rumah = $_SESSION['id_pembayaran'];
-$SesLvl = $_SESSION['level'];
-
-$query    = mysqli_query($koneksi, "SELECT * FROM pembayaran_dp INNER JOIN pemesanan_rumah ON pemesanan_rumah.id_pemesanan_rumah=pembayaran_dp.id_pemesanan_rumah WHERE pembayaran_dp.id_pemesanan_rumah='$id_pemesanan_rumah'");
-$result   = mysqli_fetch_array($query);
-
-if (isset($_POST['konfirmasi'])) {
-    $id = $_POST['id_pemesanan_rumah'];
-    $query = "UPDATE pembayaran_dp SET status_dp = 'Lunas' WHERE id_pemesanan_rumah='$id'";
-    $result = mysqli_query($koneksi, $query);
-
-    header("location:riwayat-pembayaran-dp.php");
-    echo '<script type ="text/JavaScript">';
-    echo 'alert("Berhasil Konfirmasi")';
-    echo '</script>';
-}
-if (isset($_POST['hapus'])) {
-    $id = $_POST['id_pemesanan_rumah'];
-    $query1 = mysqli_query($koneksi,"DELETE FROM pembayaran_dp WHERE id_pemesanan_rumah='$id'") or die(mysqli_error($koneksi));
-    header("location:riwayat-pembayaran-dp.php");
-    // $result = mysqli_query($koneksi, $query1); 
-}
-?>
 <main id="main">
 
 <!-- ======= Contact Section ======= -->
@@ -56,13 +29,13 @@ if (isset($_POST['hapus'])) {
   <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th>No</th>    
+            <th>No</th>
             <th>Nama Pemesanan</th>
             <th>Tanggal Pembayaran</th>
             <th>Bukti Pembayaran</th>
             <th>Status</th>
             <th></th>
-            
+
         </tr>
     </thead>
 
@@ -79,7 +52,7 @@ if (isset($_POST['hapus'])) {
     //   $dis = "disabled";
     // } else ($SesLvl == 4){
     //   $dis = "disabled";
-    // } 
+    // }
     ?>
     <?php
     while($row = mysqli_fetch_array($result)){
@@ -95,11 +68,11 @@ if (isset($_POST['hapus'])) {
       <td><img src="img/pembayaran_dp/<?php echo $row['bukti_pembayaran_dp']; ?>"  height="80px"></td>
       <td><?php echo $status;?></td>
       <td>
-      
+
         <?php
       }
       ?>
-        
+
     </tbody>
 </table>
 </div>

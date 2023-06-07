@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('user_detail', function (Blueprint $table) {
-            $table->foreignID('level')->references('id_level')->on('level_detail')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::table('pemesanan_rumah', function (Blueprint $table) {
+            $table->foreignID('id_cluster')->after("no_telp")->references('id')->on('cluster')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -25,9 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('user_detail', function (Blueprint $table) {
-            $table->dropForeign(['level']);
-            $table->dropColumn('level');
+        Schema::table('pemesanan_rumah', function (Blueprint $table) {
+            $table->dropForeign(['id_cluster']);
+            $table->dropColumn('id_cluster');
         });
     }
 };

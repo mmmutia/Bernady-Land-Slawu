@@ -1,11 +1,3 @@
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +5,7 @@ $userName = $_SESSION['name'];
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ $title }}</title>
+  <title>Bernady Land Slawu @yield('title')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

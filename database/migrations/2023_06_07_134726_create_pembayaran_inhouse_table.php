@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detail_pemesanan', function (Blueprint $table) {
-            $table->id('id_detail_pemesanan');
-            // $table->id('id_pemesanan_rumah');
-            $table->char('detail_blok');
-            $table->char('jumlah_dp');
+        Schema::create('pembayaran_inhouse', function (Blueprint $table) {
+            $table->id();
+            $table->date('tgl_pembayaran_inhouse');
+            $table->string('bukti_pembayaran_inhouse');
+            $table->string('status_inhouse');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_pemesanan');
+        Schema::dropIfExists('pembayaran_inhouse');
     }
 };
