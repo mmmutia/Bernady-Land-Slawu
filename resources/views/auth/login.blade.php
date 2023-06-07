@@ -7,7 +7,7 @@
             <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
             <div class="login-form">
                 <div id="login-box" class="col-md-12">
-                    <form class="user" action="{{ route('register') }}" method="post">
+                    <form class="user" action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="form-group">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Email Address..." required autocomplete="email" autofocus>

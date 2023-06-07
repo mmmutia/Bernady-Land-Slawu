@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -67,12 +68,19 @@ class LoginController extends Controller
             }
         }
 
-        public static function cek_user()
-    {
-        if (isset($_COOKIE['token']) && !empty($_COOKIE['token'])) {
-            abort(Response::HTTP_NOT_FOUND);
+        public function logout(Request $request)
+        {
+            Auth::logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
+            return redirect('/');
         }
-    }
+
+
+
 
     }
 

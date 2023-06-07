@@ -2,14 +2,6 @@
 
 
 @section('isi')
-<?php  
-// require('koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-
-?>
 <main id="main">
 
 <!-- ======= About Us Section ======= -->
@@ -44,12 +36,12 @@ $userName = $_SESSION['name'];
       <div class="col-lg-6 pt-4 pt-lg-0">
         <h3>Bernady Land Slawu</h3><br>
         <p class="fst-italic">
-         Terletak di tengah-tengah wilayah Kota yang berbentuk menyerupai hati menjadikan kawasan Bernady Land Slawu sebagai pusat dimana 
-         hati sebagai tempat yang paling nyaman berada. Hunian yang dibuat dengan estetika yang modern dan futuristik memberikan kesan ekslusif. 
-         Kawasan hijau yang masih alami serta asri memberikan aura positif dan semangat. Tidak hanya sebagai rumah, kami membangun impian dimana 
+         Terletak di tengah-tengah wilayah Kota yang berbentuk menyerupai hati menjadikan kawasan Bernady Land Slawu sebagai pusat dimana
+         hati sebagai tempat yang paling nyaman berada. Hunian yang dibuat dengan estetika yang modern dan futuristik memberikan kesan ekslusif.
+         Kawasan hijau yang masih alami serta asri memberikan aura positif dan semangat. Tidak hanya sebagai rumah, kami membangun impian dimana
          semua orang menjadikan hati sebagai awal dan tujuan.
         </p>
-       
+
       </div>
     </div>
 

@@ -2,35 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HomeUser;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeUserController extends Controller
+class TeamController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('homeuser');
+        return view('services');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
@@ -47,7 +29,7 @@ class HomeUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Team $about)
     {
         //
     }
@@ -55,7 +37,7 @@ class HomeUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Team $about)
     {
         //
     }
@@ -63,7 +45,7 @@ class HomeUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Team $about)
     {
         //
     }
@@ -71,9 +53,8 @@ class HomeUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Team $about)
     {
         //
     }
 }
-

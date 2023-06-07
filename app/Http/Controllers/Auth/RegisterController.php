@@ -71,15 +71,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        return redirect()->route('login');
     }
 
-
-    public static function cek_user()
-    {
-        if (isset($_COOKIE['token']) && !empty($_COOKIE['token'])) {
-            abort(Response::HTTP_NOT_FOUND);
-        }
-    }
 
 }

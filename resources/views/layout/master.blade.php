@@ -142,7 +142,7 @@ $userName = $_SESSION['name'];
           </div>
           <div class="modal-body">Pilih "Logout" dibawah jika anda yakin ingin logout.</div>
           <div class="modal-footer">
-            <a href="logout.php" class="btn btn-danger btn-sm" id="logout_link">Logout</a>
+            <a href="/" class="btn btn-danger btn-sm" id="logout_link">Logout</a>
             <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Cancel</button>
           </div>
       </div>

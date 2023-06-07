@@ -2,37 +2,21 @@
 
 
 @section('isi')
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
 
-$userName = $_SESSION['name'];
-
-?>
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-cntent-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
-      <?php
-
-if($userName = $_SESSION['name']){
-
-  echo "
+@if (auth()->user())
   <!-- Slide 1 -->
   <div class='carousel-item active'>
     <div class='carousel-container'>
-      <h2 class='animate__animated animate__fadeInDown'>Selamat Datang $userName di <span>Bernady Land Slawu</span></h2>
+      <h2 class='animate__animated animate__fadeInDown'>Selamat Datang {{auth()->user()->name}} di <span>Bernady Land Slawu</span></h2>
       <p class='animate__animated animate__fadeInUp'>Hunian yang dirancang sebagai sebuah kota modern di masa depan dengan estetika yang modern dan futuristik memberikan kesan eksklusif.</p>
       <a href='portfolio.php' class='btn-get-started animate__animated animate__fadeInUp'>Pesan Rumah</a>
     </div>
   </div>
-
-
-  ";
-
-}else{
-  echo "
+  @else
   <!-- Slide 1 -->
   <div class='carousel-item active'>
     <div class='carousel-container'>
@@ -41,15 +25,7 @@ if($userName = $_SESSION['name']){
       <a href='/portofolio' class='btn-get-started animate__animated animate__fadeInUp'>Pesan Rumah</a>
     </div>
   </div>
-
-
-  ";
-}
-
-      ?>
-
-
-
+  @endif
       <!-- Slide 2 -->
       <div class="carousel-item">
         <div class="carousel-container">
