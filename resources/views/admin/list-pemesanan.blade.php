@@ -1,28 +1,14 @@
 @include('partials.navbar-admin-keuangan')
 
-@yield('isi')
-<?php
-// require('../koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$id_pemesanan_rumah = $_SESSION['id_pemesanan_rumah'];
-$userLvl = $_SESSION['level'];
-
-if (isset($_POST['hapus'])) {
-
-    $hapus = mysqli_query($koneksi, "DELETE FROM pemesanan_rumah
-      WHERE id_pemesanan_rumah = '$id_pemesanan_rumah[id_pemesanan_rumah]'
-  ");
-}
-?>
+@section('title', '- Data Pemesanan')
+@section('isi')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 <!-- Page Heading -->
 <div class="row">
     <h1 class="h3 mb-2 text-gray-800">Data Pemesanan Rumah</h1>
-    
+
 </div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-4">
@@ -56,7 +42,7 @@ if (isset($_POST['hapus'])) {
                     //   $dis = "disabled";
                     // } else ($SesLvl == 4){
                     //   $dis = "disabled";
-                    // } 
+                    // }
 
                     while ($row = mysqli_fetch_array($result)) {
                         $id_pemesanan_rumah = $row['id_pemesanan_rumah'];

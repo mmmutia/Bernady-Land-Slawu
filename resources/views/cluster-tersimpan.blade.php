@@ -2,19 +2,6 @@
 
 @section('title', '- Cluster Tersimpan')
 @section('isi')
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-$Id_user = $data['id_user'];
-$query = mysqli_query($koneksi,"SELECT * from simpan_cluster JOIN cluster ON cluster.id_cluster = simpan_cluster.id_cluster WHERE simpan_cluster.id_user='$Id_user'");
-// $data = mysqli_fetch_array($query_mysql);
-
-?>
 <main id="main">
 
 <!-- ======= Our Portfolio Section ======= -->

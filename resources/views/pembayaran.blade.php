@@ -3,8 +3,6 @@
 @section('title', '- Pembayaran')
 @section('isi')
  <main id="main">
-
-
 <!-- ======= Contact Section ======= -->
 <section class="breadcrumbs">
   <div class="container">

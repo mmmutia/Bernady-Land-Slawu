@@ -40,27 +40,6 @@
     </thead>
 
     <tbody>
-    <?php
-    $query = "SELECT * from pembayaran_dp join pemesanan_rumah on pembayaran_dp.id_pemesanan_rumah=pemesanan_rumah.id_pemesanan_rumah";
-    $result = mysqli_query($koneksi, $query);
-    $no=1;
-    // if ($SesLvl == 2){
-    //   $dis = "";
-    // } else if ($SesLvl == 1){
-    //   $dis = "disabled";
-    // } else if ($SesLvl == 3){
-    //   $dis = "disabled";
-    // } else ($SesLvl == 4){
-    //   $dis = "disabled";
-    // }
-    ?>
-    <?php
-    while($row = mysqli_fetch_array($result)){
-      $nama_pemesan = $row['nama_pemesan'];
-      $tgl_pembayaran = $row['tgl_pembayaran_dp'];
-      $bukti_foto = $row['bukti_pembayaran_dp'];
-      $status = $row['status_dp'];
-      ?>
     <tr class="text-center">
       <td><?php echo $no++?></td>
       <td><?php echo $nama_pemesan;?></td>
@@ -68,10 +47,6 @@
       <td><img src="img/pembayaran_dp/<?php echo $row['bukti_pembayaran_dp']; ?>"  height="80px"></td>
       <td><?php echo $status;?></td>
       <td>
-
-        <?php
-      }
-      ?>
 
     </tbody>
 </table>

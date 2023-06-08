@@ -2,17 +2,7 @@
 
 @section('title', '- Profil')
 @section('isi')
-<?php
-// require ('koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$userLvl = $_SESSION['level'];
-// $id_user = $_SESSION['id_user'];
 
-$query_mysql = mysqli_query($koneksi,"select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-?>
  <main id="main">
 
 <!-- ======= Contact Section ======= -->

@@ -17,7 +17,7 @@
                   <li><a href="/team">Tim</a></li>
                   <li><a href="/contact">Kontak</a></li>
 
-                  @if ((auth()->user()))
+                  @if ((auth()->user()) != null)
           <div class='dropdown' style='margin-right:70px;><a href='#'>
           <a href='#' style='text-decoration: none; color: white;'>
             <img src='img/logo_orang.png' alt='Logo Orang' style='width: 35px; height: 35px; margin-right: 15px; display: inline-block;'>
@@ -33,7 +33,7 @@
           </ul>
         </div>
         @else
-        <li><a class=" {{ ($title === 'Login') ? 'active' : ''}}" href="/login">Login</a></li>
+        <li><a href="/login">Login</a></li>
         @endif
     </ul>
          <i class="bi bi-list mobile-nav-toggle"></i>
