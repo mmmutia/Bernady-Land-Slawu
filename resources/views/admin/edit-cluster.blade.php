@@ -1,6 +1,6 @@
 @extends('layout.master-admin')
 
-
+@section('title', '- Edit Cluster')
 @section('isi')
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -132,7 +132,7 @@
                     <div class="group">
                         <input type="submit" name="update" class="btn btn-info btn-md" value="Update">
                     </div>
-                    <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3"> 
+                    <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3">
     <center><button type="submit" class="btn btn-outline-info" name="Update">Update</button></center>
     </div> -->
             </div>

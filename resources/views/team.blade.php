@@ -2,14 +2,6 @@
 
 @section('title', '- Tim')
 @section('isi')
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-
-?>
 <main id="main">
 <!-- ======= Our Team Section ======= -->
 <section class="breadcrumbs">

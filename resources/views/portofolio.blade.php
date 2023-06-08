@@ -2,15 +2,7 @@
 
 @section('title', '- Cluster')
 @section('isi')
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
 
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query("select * from cluster");
-
-?>
 <main id="main">
 
 
@@ -45,15 +37,6 @@ $query_mysql = mysqli_query("select * from cluster");
     </div>
   </div>
 </div>
-
-<?php
-if(isset($_GET['cari'])){
-$cari = $_GET['cari'];
-$query_mysql = mysqli_query("select * from cluster where nama_cluster like '%".$cari."%'");
-}else{
-$query_mysql = mysqli_query("select * from cluster");
-}
-?>
 
 <!-- ======= Portfolio Section ======= -->
 <section class="portfolio">

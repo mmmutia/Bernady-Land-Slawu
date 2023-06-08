@@ -1,65 +1,7 @@
 @extends('layout.master-admin')
 
-
+@section('title', '- Tambah Cluster')
 @section('isi')
-<?php
-require('../koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-if (isset($_POST['tambah'])) {
-    // $Id_user = $_POST['txt_id_user'];
-    // $foto = $_FILES['foto_cluster']['name'];
-    // $temp = $_FILES['foto_cluster']['tmp_name'];
-
-    $nama_cluster = $_POST['txt_namacluster'];
-    $blok = $_POST['txt_blok'];
-    $jumlah_unit = $_POST['jumlah_unit'];
-    $harga = $_POST['harga'];
-    $hargaDp = $_POST['hargaDp'];
-    $filter = $_POST['filter'];
-    $jenis_cluster = $_POST['jenis_cluster'];
-    // $filter = $_POST['txt_filter'];
-    $target_dir = "img/images_cluster/";
-    $target_file = $target_dir . basename($_FILES["txt_fotocluster"]["name"]);
-    $uploadcluster = $_FILES['txt_fotocluster']['name'];
-    $filecluster = $_FILES['temp_name'];
-    $image_files = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    // Check if image file is a actual image or fake image
-
-    $check = getimagesize($_FILES["txt_fotocluster"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["txt_fotocluster"]["tmp_name"], $target_file)) {
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
-
-
-    $query = "INSERT INTO cluster(nama_cluster,blok,jumlah_unit,harga,harga_dp,filter,jenis_cluster,foto_cluster) VALUES ('$nama_cluster','$blok','$jumlah_unit','$harga','$hargaDp','$filter','$jenis_cluster','$uploadcluster')";
-    $result = mysqli_query($koneksi, $query);
-
-    if ($result) {
-        echo "<script>alert('Data Telah Berhasil Disimpan');window.location='cluster.php'</script>";
-    }
-}
-?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -107,7 +49,7 @@ if (isset($_POST['tambah'])) {
                 </div>
                 <input type="submit" name="tambah" class="btn btn-info btn-md" value="submit">
             </div>
-            <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3"> 
+            <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3">
 <center><button type="submit" class="btn btn-outline-info" name="simpan">Simpan</button></center>
 </div> -->
     </div>

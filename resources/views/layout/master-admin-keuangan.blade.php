@@ -1,17 +1,3 @@
-<?php  
-// require('../koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-$userLvl = $_SESSION['level'];
-
-
-if (!isset($_SESSION['name'])) {
-    header('Location: ../index.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +9,7 @@ if (!isset($_SESSION['name'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Keuangan - Bernady Land Slawu</title>
+    <title>Admin Keuangan @yield('title')</title>
 
     <!-- Favicons -->
     <link href="../img/logo-bernady.png" rel="icon">

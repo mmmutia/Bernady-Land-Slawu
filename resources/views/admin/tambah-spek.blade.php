@@ -1,51 +1,7 @@
 @include('partials.navbar-admin')
 
-@yield('isi')
-<?php
-// require('../koneksi.php');
-session_start();
-error_reporting(0);
-
-$userName = $_SESSION['name'];
-$userLvl = $_SESSION['level'];
-
-
-if (!isset($_SESSION['name'])) {
-    header('Location: ../index.php');
-}
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-if (isset($_POST['add_spesifikasi'])) {
-    $id_spesifikasi = $_POST['id_spesifikasi'];
-    $id_cluster = $_POST['id_cluster'];
-    $pondasi = $_POST['pondasi'];
-    $dinding = $_POST['dinding'];
-    $rangka_atap = $_POST['rangka_atap'];
-    $kusen = $_POST['kusen'];
-    $plafond = $_POST['plafond'];
-    $air = $_POST['air'];
-    $listrik = $_POST['listrik'];
-    $jumlah_kamar = $_POST['jumlah_kamar'];
-    $luas_tanah = $_POST['luas_tanah'];
-    $cek = "SELECT * FROM spesifikasi_teknis WHERE id_spesifikasi='$id_spesifikasi'";
-    $result_cek = mysqli_query($koneksi, $cek);
-    $jumlah = mysqli_num_rows($result_cek);
-    if ($jumlah == 0) {
-        $query = "INSERT INTO spesifikasi_teknis(id_cluster, pondasi, dinding, rangka_atap, kusen, plafond, air, listrik, jumlah_kamar, luas_tanah) VALUES ('$id_cluster','$pondasi','$dinding','$rangka_atap','$kusen','$plafond','$air','$listrik','$jumlah_kamar','$luas_tanah')";
-        $result = mysqli_query($koneksi, $query);
-        if ($result) {
-            echo "<script>alert('Data Telah Berhasil Disimpan');window.location='../admin/cluster.php'</script>";
-        }
-    } elseif ($jumlah > 0) {
-        $query = "UPDATE spesifikasi_teknis SET id_cluster='$id_cluster',pondasi='$pondasi', dinding='$dinding', rangka_atap='$rangka_atap', kusen='$kusen', plafond='$plafond', air='$air', listrik='$listrik', jumlah_kamar='$jumlah_kamar', luas_tanah='$luas_tanah' WHERE id_spesifikasi='$id_spesifikasi'";
-        $result = mysqli_query($koneksi, $query);
-        if ($result) {
-            echo "<script>alert('Data Telah Berhasil Disimpan');window.location='../admin/cluster.php'</script>";
-        }
-    }
-}
-
-?>
+@section('title', '- Tambah Spesifikasi Teknis')
+@section('isi')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -115,7 +71,7 @@ while ($roww = mysqli_fetch_array($resultt)) {
                 <div class="group" style="text-align: center;">
                     <input type="submit" name="add_spesifikasi" class="btn btn-info btn-md" value="submit">
                 </div>
-                <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3"> 
+                <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3">
 <center><button type="submit" class="btn btn-outline-info" name="simpan">Simpan</button></center>
 </div> -->
             </div>

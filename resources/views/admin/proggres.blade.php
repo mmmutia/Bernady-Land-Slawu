@@ -1,6 +1,7 @@
 @include('partials.navbar-admin-keuangan')
 
-@yield('isi')
+@section('title', '- Progres')
+@section('isi')
  <!-- Begin Page Content -->
  <div class="container-fluid">
 
@@ -58,7 +59,7 @@
                       <div class="align-items-center">
                         <button data-modal-target="#modal-keterangan<?php echo $item['id'] ?>" class="">Lihat Keterangan</button>
                       </div>
-              
+
           </div>
         </div>
       </div>

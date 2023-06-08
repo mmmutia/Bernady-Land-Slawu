@@ -2,48 +2,7 @@
 
 @section('title', '- Detail Cluster')
 @section('isi')
-<?php
-// require('koneksi.php');
-session_start();
-error_reporting(0);
 
-if (isset($_GET['id_cluster'])||isset($_GET['id_simpan'])) {
-  $id_cluster = $_GET['id_cluster'];
-  $id_simpan = $_GET['id_simpan'];
-} else {
-  die("Error. No ID Selected!");
-}
-
-// $id_cluster = $_SESSION['id_cluster'];
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-
-
-$query    = mysqli_query($koneksi, "SELECT * FROM spesifikasi_teknis JOIN cluster ON cluster.id_cluster=spesifikasi_teknis.id_cluster WHERE spesifikasi_teknis.id_cluster='$id_cluster'");
-$result   = mysqli_fetch_array($query);
-
-if (isset($_POST['simpan'])) {
-  $Id_user = $data['id_user'];
-  $cek = mysqli_query($koneksi, "select * from simpan_cluster where id_cluster = '$id_cluster' AND id_user = '$Id_user' ");
-  if (mysqli_num_rows($cek) == 0) {
-    $query = "INSERT INTO simpan_cluster(id_cluster,id_user) VALUES ('$_GET[id_cluster]','$data[id_user]')";
-    $result = mysqli_query($koneksi, $query);
-  } else {
-    header("location:portofolio-details.php?id_cluster=$id_cluster");
-    echo '<script type ="text/JavaScript">';
-    echo 'alert("Anda Sudah Menyimpan Cluster Ini")';
-    echo '</script>';;
-  }
-}
-if (isset($_POST['hapus'])) {
-  $Id_user = $data['id_user'];
-    $query1 = mysqli_query($koneksi,"DELETE FROM simpan_cluster WHERE id_simpan='$id_simpan'") or die(mysqli_error($koneksi));
-    header("location:daftar-cluster-tersimpan.php");
-    // $result = mysqli_query($koneksi, $query1);
-}
-
-?>
 <main id="main">
 
 <!-- ======= Our Portfolio Section ======= -->

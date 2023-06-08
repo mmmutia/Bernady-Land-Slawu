@@ -2,28 +2,7 @@
 
 @section('title', '- Pemesanan')
 @section('isi')
-<?php
-// require ('koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$id_pemesanan_rumah = $_SESSION['id_pemesanan_rumah'];
-$userLvl = $_SESSION['level'];
 
-// $id_cluster = $_SESSION['id_cluster'];
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-$id_user = $data['id_user'];
-// $query = mysqli_fetch_array($query);
-
-if (isset($_POST['hapus'])) {
-
-  $hapus = mysqli_query($koneksi, "DELETE FROM pemesanan_rumah
-      WHERE id_pemesanan_rumah = '$id_pemesanan_rumah[id_pemesanan_rumah]'
-  ");
-}
-?>
 <main id="main">
 
 <!-- ======= Contact Section ======= -->

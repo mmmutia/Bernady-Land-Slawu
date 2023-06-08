@@ -1,6 +1,7 @@
 @include('partials.navbar-admin-keuangan')
 
-@yield('isi')
+@section('title', '- Pembayaran')
+@section('isi')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

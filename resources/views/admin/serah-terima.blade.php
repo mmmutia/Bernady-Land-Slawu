@@ -1,34 +1,7 @@
-@include('partials.navbar-admin-admin')
+@include('partials.navbar-admin-keuangan')
 
-@yield('isi')
-<?php
-// require('../koneksi.php');
-session_start();
-error_reporting(0);
-$userName = $_SESSION['name'];
-$query_mysql = mysqli_query($koneksi, "select * from user_detail where user_fullname = '$userName'");
-$data = mysqli_fetch_array($query_mysql);
-if (isset($_POST['tambah'])) {
-    // $Id_user = $_POST['txt_id_user'];
-    // $foto = $_FILES['foto_cluster']['name'];
-    // $temp = $_FILES['foto_cluster']['tmp_name'];
-
-    $id_pemesanan_rumah = $_POST['id_pemesanan_rumah'];
-    $no_surat = $_POST['no_surat_bangunan'];
-
-
-    $query = "INSERT INTO serah_terima(id_serah_terima,id_pemesanan_rumah,no_surat_bangunan) VALUES ('','$id_pemesanan_rumah','$no_surat')";
-    $result = mysqli_query($koneksi, $query);
-
-    if ($result) {
-        echo "<script>alert('Data Telah Berhasil Disimpan');window.location='../riwayat-serah-terima.php'</script>";
-    }
-}
-
-if (!isset($_SESSION['name'])) {
-    header('Location: ../index.php');
-}
-?>
+@section('title', '- Serah Terima')
+@section('isi')
 //  <!-- Begin Page Content -->
  <div class="container-fluid">
 
@@ -70,7 +43,7 @@ if (!isset($_SESSION['name'])) {
                             <div class="group">
                                 <button type="submit" name="tambah" class="btn btn-info btn-md">Simpan</button>
                             </div>
-                            <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3"> 
+                            <!-- <div class="row-md-6 form-group mt-3 mt-md-0 mb-3">
 <center><button type="submit" class="btn btn-outline-info" name="simpan">Simpan</button></center>
 </div> -->
                     </div>
