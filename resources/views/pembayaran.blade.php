@@ -37,7 +37,7 @@
         <h5 class="card-title">Pembayaran DP Rumah</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <button data-modal-target="#modal-add" class="btn btn-outline-secondary" name="add-pembayaran-dp">Bayar Sekarang</button>
-        <a href="riwayat-pembayaran-dp.php" class="btn btn-outline-secondary" name="add-pembayaran-dp">Riwayat Pembayaran</a>
+        <a href="/riwayat-pembayaran-dp" class="btn btn-outline-secondary" name="add-pembayaran-dp">Riwayat Pembayaran</a>
       </div>
       <div class="card-footer text-muted">
         2 days ago
@@ -53,7 +53,7 @@
         <h5 class="card-title">Pembayaran InHouse</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <button data-modal-target="#modal-add-inhouse" class="btn btn-outline-secondary" name="add-pembayaran-inhouse">Bayar Sekarang</button>
-        <a href="riwayat-pembayaran-inhouse.php" class="btn btn-outline-secondary" name="add-pembayaran-inhouse">Riwayat Pembayaran</a>
+        <a href="/riwayat-pembayaran-inhouse" class="btn btn-outline-secondary" name="add-pembayaran-inhouse">Riwayat Pembayaran</a>
       </div>
       <div class="card-footer text-muted">
         2 days ago
@@ -80,15 +80,6 @@
 
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
-              <?php
-
-              $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-              while ($row = mysqli_fetch_array($query)) {
-                echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-              }
-              ?>
-
-
             </select>
 
           </div>
@@ -240,15 +231,6 @@
 
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
-              <?php
-
-              $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-              while ($row = mysqli_fetch_array($query)) {
-                echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-              }
-              ?>
-
-
             </select>
 
           </div>
@@ -402,15 +384,6 @@
 
             <select class="form-control" name="id_pemesanan_rumah" required>
             <option value='#'> Pilih Id</option>
-              <?php
-
-              $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-              while ($row = mysqli_fetch_array($query)) {
-                echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-              }
-              ?>
-
-
             </select>
 
           </div>

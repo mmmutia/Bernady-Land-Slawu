@@ -18,7 +18,7 @@
         }
     </style>
       <ol>
-        <li><a href="index-admin.php">Beranda</a></li>
+        <li><a href="/homeuser">Beranda</a></li>
         <li>Profil</li>
       </ol>
     </div>
@@ -46,12 +46,6 @@
         </tr>
     </thead>
     <tbody>
-    <?php
-    $query2 = "SELECT * FROM detail_pemesanan JOIN pemesanan_rumah ON detail_pemesanan.id_pemesanan_rumah = pemesanan_rumah.id_pemesanan_rumah JOIN serah_terima ON pemesanan_rumah.id_pemesanan_rumah = serah_terima.id_pemesanan_rumah  WHERE pemesanan_rumah.id_user = '$id_user'";
-    $result = mysqli_query($koneksi,$query2);
-    $no=1;
-    while($row = mysqli_fetch_array($result)){
-    ?>
     <tr class="text-center">
           <td><?php echo $no++?></td>
           <td><?php echo $row['id_pemesanan_rumah'];?></td>
@@ -65,10 +59,6 @@
           <td><?php echo $row['detail_blok'];?></td>
           <td><?php echo $row['no_surat_bangunan'];?></td>
         </tr>
-        <?php
-      }
-      ?>
-
     </tbody>
 </table>
 </div>

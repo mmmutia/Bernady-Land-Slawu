@@ -24,10 +24,10 @@
             <span style='font-size: 14px; display: inline-block;'>{{auth()->user()->name}}</span>
           </a>
           <ul>
-            <li> <a href='/profil-user'>Profil</a></li>
+            <li> <a href='/profil'>Profil</a></li>
             <li> <a href='/list-pemesanan'>Pemesanan Rumah</a></li>
-            <li> <a href='/pembayaran-customer'>Pembayaran</a></li>
-            <li> <a href='/proggres_user'>Proggres</a></li>
+            <li> <a href='/pembayaran'>Pembayaran</a></li>
+            <li> <a href='/progres'>Progres</a></li>
             <li> <a href='/cluster-tersimpan'>Cluster Tersimpan</a></li>
             <li data-bs-toggle='modal' data-bs-target='#modalLogout'> <a href='javascript:void(0)'>Logout</a></li>
           </ul>

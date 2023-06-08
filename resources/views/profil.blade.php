@@ -35,19 +35,15 @@
           <div class="row">
             <h1 class="text-center"><span>Profile</span></h1>
             <div class="row-md-6 form-group mb-3">
-              <input type="text" name="name" class="form-control" id="name" value="<?php echo $data['user_fullname'];?>" required disabled>
+              <input type="text" name="name" class="form-control" id="name" value={{auth()->user()->name}} required disabled>
             </div>
             <div class="row-md-6 form-group mt-3 mt-md-0 mb-3">
-              <input type="email" class="form-control" name="email" id="email" value="<?php echo $data['user_email'];?>" required disabled>
+              <input type="email" class="form-control" name="email" id="email" value={{auth()->user()->email}} required disabled>
             </div>
             <div class="row-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="password" id="password" value="<?php echo $data['user_password'];?>" required disabled>
+              <input type="email" class="form-control" name="password" id="password" value={{auth()->user()->password}} required disabled>
             </div>
           </div>
-          <!-- <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required disabled>
-          </div> -->
-          <!-- <div class="text-center"><button type="submit">Send Message</button></div> -->
         </form>
       </div>
 
