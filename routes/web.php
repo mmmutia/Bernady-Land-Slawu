@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/services', [ServicesController::class, 'index'])->middleware('CheckRole:user');
     Route::get('/team', [TeamController::class, 'index'])->middleware('CheckRole:user');
     Route::get('/contact', [ContactController::class, 'index'])->middleware('CheckRole:user');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 });
