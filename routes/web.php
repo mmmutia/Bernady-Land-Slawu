@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ClusterSimpanController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\ProgresController;
 
 /*
@@ -43,5 +44,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cluster-tersimpan', [ClusterSimpanController::class, 'index'])->middleware('CheckRole:user');
 
 });
+Route::get('/cluster', [ClusterController::class, 'index'])->name('cluster');
+Route::get('/tambahcluster', [ClusterController::class, 'tambahclusterindex'])->name('tambahcluster');
+Route::post('/prosescluster', [ClusterController::class, 'store'])->name('prosestambahcluster');
+Route::get('/editcluster/{id}', [ClusterController::class, 'edit'])->name('editcluster');
+Route::post('/updatecluster/{id}', [ClusterController::class, 'update'])->name('updatecluster');
 
 Auth::routes();

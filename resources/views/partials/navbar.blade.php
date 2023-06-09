@@ -17,8 +17,8 @@
                   <li><a href="/team">Tim</a></li>
                   <li><a href="/contact">Kontak</a></li>
 
-                  @if ((auth()->user()) != null)
-          <div class='dropdown' style='margin-right:70px;><a href='#'>
+          @if (auth()->user() == null)
+          <div class='dropdown' style='margin-right:70px;'><a href='#'>
           <a href='#' style='text-decoration: none; color: white;'>
             <img src='img/logo_orang.png' alt='Logo Orang' style='width: 35px; height: 35px; margin-right: 15px; display: inline-block;'>
             <span style='font-size: 14px; display: inline-block;'>{{auth()->user()->name}}</span>

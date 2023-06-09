@@ -11,4 +11,9 @@ class PembayaranController extends Controller
     {
         return view('pembayaran');
     }
+
+    public function create(){
+        $pembayaran = new Pembayaran;
+        
+    }
 }
