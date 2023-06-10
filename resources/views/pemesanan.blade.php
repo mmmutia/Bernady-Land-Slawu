@@ -57,54 +57,55 @@
             <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
             <div class="login-form">
                 <div id="login-box" class="col-md-12">
-                    <form class="user" action="pemesanan.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-group" hidden>
-                            <input name="txt_id_user" type="text" class="form-control" placeholder="Nama Lengkap *"
-                                value="<?php echo $data['id_user'];?>" />
+                    <form class="user" action="{{ route('prosespemesanan') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group" >
+                            <input name="id_user" type="text" class="form-control" placeholder="Id User *"
+                                value="{{auth()->user()->id}}" /></input>
                         </div>
                         <div class="form-group">
-                            <input name="txt_namapemesan" type="text" class="form-control" placeholder="Nama Lengkap *"
-                                value="<?php echo $data['user_fullname'];?>" />
+                            <input name="nama_pemesan" type="text" class="form-control" placeholder="Nama Lengkap *"
+                                value="{{auth()->user()->name}}" /></input>
                         </div>
                         <div class="form-group">
-                            <input name="txt_alamat" type="text" class="form-control" placeholder="Alamat *" value="" />
+                            <input name="alamat" type="text" class="form-control" placeholder="Alamat *" value="" /></input>
                         </div>
                         <div class="form-group">
-                            <input name="NomorTelp" type="number" class="form-control" placeholder="Nomor Telepon *"
-                                value="" />
+                            <input name="no_telp" type="number" class="form-control" placeholder="Nomor Telepon *"
+                                value="" /></input>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="txt_idcluster">
-                            <option>-- Cluster --</option>
-                                <option>33. Boulevard Magnolia</option>
-                                <option>34. Camelia</option>
-                                <option>36. Edge Gardenia</option>
-                                <option>37. New Edge Gardenia</option>
-                                <option>38. Pinewood Magna</option>
-                                <option>39. Pinewood Prime</option>
-                                <option>40. Pinewood  Varsa</option>
-                                <option>41. Pinewood Millenial</option>
-                                <option>42. Pinewood Terra</option>
-                                <option>43. Pinewood Terra +</option>
-                                <option>44. Plumeria</option>
+                            <select class="form-control" name="nama_cluster">
+                            <option>-- Pilih Cluster --</option>
+                                <option>Boulevard Magnolia</option>
+                                <option>Camelia</option>
+                                <option>Edge Gardenia</option>
+                                <option>New Edge Gardenia</option>
+                                <option>Pinewood Magna</option>
+                                <option>Pinewood Prime</option>
+                                <option>Pinewood  Varsa</option>
+                                <option>Pinewood Millenial</option>
+                                <option>Pinewood Terra</option>
+                                <option>Pinewood Terra +</option>
+                                <option>Plumeria</option>
                             </select>
                         </div>
                         <div class="row">
                             <div class="col-8 form-group">
                                 <!-- <input name="NPerumahan" type="number" class="form-control"  placeholder="Nomor Perumahan *" value="" /> -->
-                                <select class="form-control" name="txt_metodepembayaran">
+                                <select class="form-control" name="jenis_pembayaran">
                                     <option>-- Metode Pembayaran --</option>
                                     <option>InHouse</option>
                                     <option>KPR</option>
                                 </select>
                             </div>
                             <div class="col-4 form-group">
-                                <input name="txt_tglpemesanan" type="date" class="form-control"
-                                    placeholder="Tgl pemesanan *" value="" />
+                                <input name="tgl_pemesanan" type="date" class="form-control"
+                                    placeholder="Tgl pemesanan *" value="" /></input>
                             </div>
                         </div>
                         <div class="form-group">
-                                <select class="form-control" name="txt_cicilandp" >
+                                <select class="form-control" name="jumlah_cicilan_dp" >
                                     <option>-- PIlih Jumlah Cicilan DP --</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -112,7 +113,7 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                                <select class="form-control" name="txt_cicilaninhouse">
+                                <select class="form-control" name="jumlah_cicilan_inhouse">
                                     <option>-- PIlih Jumlah Cicilan InHouse --</option>
                                     <option>Pilih Ini Jika Metode Pembayaran KPR</option>
                                     <option>1</option>
@@ -126,14 +127,14 @@
                         <div class="row">
                         <div class="col-2 form-group">
                             <!-- <input name="txt_fotocopyktp" type="file" class="form-control" placeholder="file *" value="" /> -->
-                            <label for="txt_fotocopyktp">Upload KTP</label>
+                            <label for="fc_ktp">Upload KTP</label>
                         </div>
                         <div class="col-10 form-group">
-                            <input type="file" name="txt_fotocopyktp" class="form-control">
+                            <input type="file" name="fc_ktp" class="form-control"></input>
                         </div>
                         </div>
-                        <button type="submit" name="pesan" class="btn btn-primary btn-user btn-block">Pesan</button>
-                        <a role="button" href="portfolio.php" class="btn btn-danger btn-user btn-block">Batal</a>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Pesan</button>
+                        <a role="button" href="/portofolio" class="btn btn-danger btn-user btn-block">Batal</a>
                     </form>
                 </div>
             </div>

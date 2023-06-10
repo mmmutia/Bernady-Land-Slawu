@@ -59,6 +59,7 @@ class ClusterController extends Controller
             $cluster->foto_cluster = $filename;
         }
 
+
         $cluster->save();
 
         return redirect()->route('cluster');
@@ -124,7 +125,7 @@ class ClusterController extends Controller
                 'jenis_cluster' => $request->jenis_cluster,
                 ]);
         }
-        
+
         return redirect()->route('cluster');
     }
 

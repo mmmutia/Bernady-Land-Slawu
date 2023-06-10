@@ -29,7 +29,6 @@
   <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th>No</th>
             <th>Nama Pemesanan</th>
             <th>Tanggal Pembayaran</th>
             <th>Bukti Pembayaran</th>
@@ -38,17 +37,19 @@
 
         </tr>
     </thead>
-
+    @foreach ($riwayatpembayarandp as $riwayatdp)
     <tbody>
+
     <tr class="text-center">
-      <td><?php echo $no++?></td>
-      <td><?php echo $nama_pemesan;?></td>
-      <td><?php echo $tgl_pembayaran;?></td>
-      <td><img src="img/pembayaran_dp/<?php echo $row['bukti_pembayaran_dp']; ?>"  height="80px"></td>
-      <td><?php echo $status;?></td>
+      <td>{{ $riwayatdp->nama_pemesan }}</td>
+      <td>{{ $riwayatdp->tgl_pembayaran_dp }}</td>
+      <td><img src="images/{{ $riwayatdp->bukti_pembayaran_dp }}"  height="80px"></td>
+      <td>{{ $riwayatdp->status_dp }}</td>
       <td>
 
     </tbody>
+
+    @endforeach
 </table>
 </div>
   <script>

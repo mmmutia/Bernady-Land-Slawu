@@ -71,33 +71,25 @@
       <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
       <div class="modal-body-add">
-        <form action="pembayaran-customer.php" method="post" enctype="multipart/form-data">
-
+        <form action="{{route('tambahpembayarandp')}}" method="post" enctype="multipart/form-data">
+            @csrf
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Id Pemesanan</label>
-
-
-            <select class="form-control" name="id_pemesanan_rumah" required>
-            <option value='#'> Pilih Id</option>
-            </select>
+            <label for="exampleFormControlSelect1">Nama Pemesan</label>
+            <input type="text" class="form-control" name="nama_pemesan" required></input>
 
           </div>
 
           <div class="form-group">
             <label for="exampleFormControlSelect1">Tanggal Pembayaran DP</label>
-
-
-            <input type="date" class="form-control" name="tgl_pembayaran_dp" required>
-
+            <input type="date" class="form-control" name="tgl_pembayaran_dp" required></input>
             </select>
 
           </div>
 
-
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran DP</label>
-            <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="foto" required>
+            <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="bukti_pembayaran_dp" id="foto" required></input>
 
           </div>
 
@@ -106,8 +98,6 @@
             <button class="btn btn-success btn-sm ms-auto" name="add-pembayaran-dp">Add</button>
             <button class="btn btn-danger btn-sm ms-auto" data-close-add>Close</button>
           </div>
-
-
         </form>
       </div>
     </div>
@@ -222,16 +212,12 @@
       <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
       <div class="modal-body-add">
-        <form action="pembayaran-customer.php" method="post" enctype="multipart/form-data">
-
+        <form action="{{route('tambahpembayarandp')}}" method="post" enctype="multipart/form-data">
+            @csrf
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Id Pemesanan</label>
-
-
-            <select class="form-control" name="id_pemesanan_rumah" required>
-            <option value='#'> Pilih Id</option>
-            </select>
+            <label for="exampleFormControlSelect1">Nama Pemesan</label>
+            <input type="text" class="form-control" name="nama_pemesan" required></input>
 
           </div>
 
@@ -239,7 +225,7 @@
             <label for="exampleFormControlSelect1">Tanggal Pembayaran DP</label>
 
 
-            <input type="date" class="form-control" name="tgl_pembayaran_dp" required>
+            <input type="date" class="form-control" name="tgl_pembayaran_dp" required></input>
 
             </select>
 
@@ -248,7 +234,7 @@
 
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran DP</label>
-            <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="foto" required>
+            <input type="file" class="form-control" id="bukti_pembayaran_dp" name="bukti_pembayaran_dp" id="foto" required></input>
 
           </div>
 
@@ -375,16 +361,12 @@
       <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
       <div class="modal-body-add">
-        <form action="pembayaran-customer.php" method="post" enctype="multipart/form-data">
-
+        <form action="{{route('tambahpembayaraninhouse')}}" method="post" enctype="multipart/form-data">
+            @csrf
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Id Pemesanan</label>
-
-
-            <select class="form-control" name="id_pemesanan_rumah" required>
-            <option value='#'> Pilih Id</option>
-            </select>
+            <label for="exampleFormControlSelect1">Nama Pemesan</label>
+            <input type="text" class="form-control" name="nama_pemesan" required></input>
 
           </div>
 
@@ -392,7 +374,7 @@
             <label for="exampleFormControlSelect1">Tanggal Pembayaran DP</label>
 
 
-            <input type="date" class="form-control" name="tgl_pembayaran_inhouse" required>
+            <input type="date" class="form-control" name="tgl_pembayaran_inhouse" required></input>
 
             </select>
 
@@ -401,7 +383,7 @@
 
           <div class="form-group">
             <label class="custom-file-label" for="customFileLang">Upload Bukti Pembayaran Inhouse</label>
-            <input type="file" class="form-control" id="bukti_pembayaran_inhouse" name="bukti_pembayaran_inhouse" id="foto" required>
+            <input type="file" class="form-control" id="bukti_pembayaran_inhouse" name="bukti_pembayaran_inhouse" id="foto" required></input>
 
           </div>
 

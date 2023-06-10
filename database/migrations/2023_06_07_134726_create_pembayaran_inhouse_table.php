@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pembayaran_inhouse', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_pemesan');
             $table->date('tgl_pembayaran_inhouse');
             $table->string('bukti_pembayaran_inhouse');
             $table->string('status_inhouse');

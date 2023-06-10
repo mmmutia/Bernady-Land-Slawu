@@ -1,10 +1,5 @@
-@include('partials.navbar-admin-keuangan')
-
-@section('title', '- Progres')
-@section('isi')
- <!-- Begin Page Content -->
- <div class="container-fluid">
-
+@extends('layout.template')
+@section('content')
 <!-- Page Heading -->
 <div class="container">
   <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -31,7 +26,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>NO</th>
                   <th>Id Pemesanan</th>
                   <th>Id User</th>
                   <th>Nama Pemesan</th>
@@ -42,22 +36,17 @@
                   <th>Action</th>
                 </tr>
               </thead>
+              @foreach ($progres as $data)
               <tbody>
-                <?php
-                $query_mysql2 = mysqli_query($koneksi, "SELECT pemesanan_rumah.nama_pemesan, proggres.id_user, proggres.tanggal, proggres.id, proggres.id_pemesanan, proggres.status, proggres.keterangan, proggres.foto FROM proggres INNER JOIN pemesanan_rumah ON pemesanan_rumah.id_pemesanan_rumah=proggres.id_pemesanan");
-                $no = 1;
-                while ($item = mysqli_fetch_array($query_mysql2)) {
-                ?>
                   <tr class="text-center">
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $item['id_pemesanan']; ?></td>
-                    <td><?php echo $item['id_user']; ?></td>
-                    <td><?php echo $item['nama_pemesan']; ?></td>
-                    <td><?php echo $item['status']; ?></td>
-                    <td><?php echo $item['tanggal']; ?></td>
+                    <td>{{ $data->id_pemesanan_rumah }}</td>
+                    <td>{{ $data->id_user }}</td>
+                    <td>{{ $data->status }}</td>
+                    <td>{{ $data->keterangan }}</td>
+                    <td>{{ $data->tanggal }}</td>
                     <td>
                       <div class="align-items-center">
-                        <button data-modal-target="#modal-keterangan<?php echo $item['id'] ?>" class="">Lihat Keterangan</button>
+                        <button data-modal-target="#modal-keterangan{{ $data->id }}" class="">Lihat Keterangan</button>
                       </div>
 
           </div>
@@ -175,27 +164,20 @@
 
 
     <!-- Pop up Edit -->
-    <div class="modal-edit" id="modal-edit<?= $item['id'] ?>">
+    <div class="modal-edit" id="modal-edit{{ $data->id }}">
       <div class="modal-header-edit">
         <h2 class="edit">Edit Form</h2>
         <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
         <div class="modal-body-edit">
-          <form action="proggres.php?id=<?= $item['id'] ?>" method="post" enctype="multipart/form-data">
+          <form action="{{route('progres', $data->id)}}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
               <label for="exampleFormControlSelect1">Id User</label>
 
 
               <select class="form-control" name="id_user_edit" required>
-                <option value='<?php echo $item['id_user']; ?>'> <?php echo $item['nama_pemesan']; ?></option>
-                <?php
-
-                  $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-                  while ($row = mysqli_fetch_array($query)) {
-                    echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-                  }
-                ?>
+                <option value='{{ $data->id_user }}'> {{ $data->nama_pemesan }}</option>
 
 
               </select>
@@ -207,15 +189,7 @@
 
 
               <select class="form-control" name="id_pemesanan_edit" required>
-                <option value='<?php echo $item['id_pemesanan']; ?>'><?php echo $item['id_pemesanan']; ?> - <?php echo $item['nama_pemesan']; ?></option>
-                <?php
-
-                  $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-                  while ($row = mysqli_fetch_array($query)) {
-                    echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-                  }
-                ?>
-
+                <option value='{{ $data->id_pemesanan_rumah }}'>{{ $data->id_pemesanan_rumah }} - {{ $data->nama_pemesan }}</option>
 
               </select>
 
@@ -226,7 +200,7 @@
 
 
               <select class="form-control" name="status_edit" required>
-                <option value="<?php echo $item['status']; ?>"><?php echo $item['status']; ?></option>
+                <option value="{{ $data->status }}">{{ $data->status }}</option>
                 <option value="Selesai">Selesai</option>
                 <option value="Pengerjaan">Pengerjaan</option>
 
@@ -238,7 +212,7 @@
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Keterangan</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan_edit" placeholder="Enter Address" maxlength="500" rows="2"><?php echo $item['keterangan']; ?></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan_edit" placeholder="Enter Address" maxlength="500" rows="2">{{ $data->keterangan }}</textarea>
             </div>
 
 
@@ -363,17 +337,17 @@
 
 
     <!-- Pop up Foto -->
-    <div class="modal-foto" id="modal-foto<?= $item['id'] ?>">
+    <div class="modal-foto" id="modal-foto{{ $data->id }}">
       <div class="modal-header-foto">
         <h2 class="foto">Foto</h2>
         <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
         <div class="modal-body-foto">
-          <form action="proggres.php" method="post" enctype="multipart/form-data">
+          <form action="{{ route('progres') }}" method="post" enctype="multipart/form-data">
 
             <div class="align-middle text-center">
 
-              <img src='img/proggres/<?php echo $item['foto'] ?>' width='150' height='150' />
+              <img src='images/{{ $data->foto }}' width='150' height='150' />
 
             </div>
 
@@ -491,17 +465,17 @@
     <!-- end Pop up Foto -->
 
     <!-- Pop up Keterangan -->
-    <div class="modal-keterangan" id="modal-keterangan<?= $item['id'] ?>">
+    <div class="modal-keterangan" id="modal-keterangan{{ $data->id }}">
       <div class="modal-header-keterangan">
         <h2 class="keterangan">Keterangan</h2>
         <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
         <div class="modal-body-keterangan">
-          <form action="progres.php" method="post" enctype="multipart/form-data">
+          <form action="{{ route('progres') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Keterangan</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="txt_alamat" placeholder="Enter Address" maxlength="500" rows="5"><?php echo $item['keterangan'] ?></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan" placeholder="Enter Address" maxlength="500" rows="5">{{ $data->keterangan }}</textarea>
             </div>
 
 
@@ -515,9 +489,6 @@
         </div>
       </div>
     </div>
-  <?php
-                }
-  ?>
   <style>
     .modal-keterangan {
       position: fixed;
@@ -623,6 +594,7 @@
 
 
   </tbody>
+  @endforeach
   </table>
 
 </div>
@@ -636,7 +608,7 @@
     <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
     <div class="modal-body-add">
-      <form action="progres.php" method="post" enctype="multipart/form-data">
+      <form action="{{ route('progres') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Id User</label>
@@ -644,15 +616,7 @@
 
           <select class="form-control" name="id_user" required>
             <option value='#'> Pilih Id user</option>
-            <?php
-            $query = mysqli_query($koneksi, "select * from user_detail where level = '4'");
-            while ($row = mysqli_fetch_array($query)) {
-              echo "<option value=$row[id_user]>$row[id_user] - $row[user_fullname]</option>";
-            }
-            ?>
-
-
-          </select>
+            <select>{{$progres->id_user}}</select>
 
         </div>
 
@@ -662,16 +626,7 @@
 
           <select class="form-control" name="id_pemesanan" required>
             <option value='#'> Pilih Id</option>
-            <?php
-
-            $query = mysqli_query($koneksi, "select * from pemesanan_rumah");
-            while ($row = mysqli_fetch_array($query)) {
-              echo "<option value=$row[id_pemesanan_rumah]> $row[id_pemesanan_rumah] - $row[nama_pemesan]</option>";
-            }
-            ?>
-
-
-          </select>
+            <select>{{$progres->id_pemesanan_rumah}}</select>
 
         </div>
 
@@ -832,5 +787,4 @@
 </div>
 <!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+@endsection

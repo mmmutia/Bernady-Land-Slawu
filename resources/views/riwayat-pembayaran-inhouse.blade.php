@@ -28,8 +28,9 @@
   <div  class="container">
   <table id="example" class="table table-striped" style="width:100%">
     <thead>
+        @foreach ($riwayatpembayaraninhouse as $riwayatinhouse)
+
         <tr>
-            <th>No</th>
             <th>Nama Pemesan</th>
             <th>Tanggal Pembayaran</th>
             <th>Bukti Pembayaran</th>
@@ -37,15 +38,16 @@
             <th></th>
 
         </tr>
+
+        @endforeach
     </thead>
 
     <tbody>
     <tr class="text-center">
-      <td><?php echo $no++?></td>
-      <td><?php echo $nama_pemesan;?></td>
-      <td><?php echo $tgl_pembayaran;?></td>
-      <td><img src="./img/bukti_inhouse/<?php echo $row['bukti_pembayaran_inhouse']; ?>"  height="80px"></td>
-      <td><?php echo $status;?></td>
+      <td>{{ $riwayatinhouse->nama_pemesan }}</td>
+      <td>{{ $riwayatinhouse->tgl_pembayaran_inhouse }}</td>
+      <td><img src="images/{{ $riwayatinhouse->bukti_pembayaran_inhouse }}"  height="80px"></td>
+      <td>{{ $riwayatinhouse->status_inhouse }}</td>
       <td>
 
     </tbody>

@@ -32,33 +32,31 @@
   <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th>No</th>
-            <th>ID Pemesanan Rumah</th>
             <th>Nama Pemesan</th>
             <th>Alamat</th>
             <th>No Telp</th>
             <th>ID Cluster</th>
             <th>Tanggal Pemesanan</th>
             <th>Jenis Pembayaran</th>
+            <th>Jumlah Cicilan DP</th>
+            <th>Jumlah Cicilan Inhouse</th>
             <th>Foto KTP</th>
-            <th>Detail Blok</th>
-            <th>No Surat Bangunan</th>
         </tr>
     </thead>
     <tbody>
+        @foreach ($riwayatpemesanan as $data)
     <tr class="text-center">
-          <td><?php echo $no++?></td>
-          <td><?php echo $row['id_pemesanan_rumah'];?></td>
-          <td><?php echo $row['nama_pemesan'];?></td>
-          <td><?php echo $row['alamat'];?></td>
-          <td><?php echo $row['no_telp_pemesan'];?></td>
-          <td><?php echo $row['id_cluster'];?></td>
-          <td><?php echo $row['tgl_pemesanan'];?></td>
-          <td><?php echo $row['jenis_pembayaran'];?></td>
-          <td><img src="img/filepemesanan/<?php echo $row['fotocopy_ktp']; ?>"  height="80px"></td>
-          <td><?php echo $row['detail_blok'];?></td>
-          <td><?php echo $row['no_surat_bangunan'];?></td>
+          <td>{{ $data->nama_pemesan }}</td>
+          <td>{{ $data->alamat }}</td>
+          <td>{{ $data->no_telp }}</td>
+          <td>{{ $data->nama_cluster }}</td>
+          <td>{{ $data->tgl_pemesanan }}</td>
+          <td>{{ $data->jenis_pembayaran }}</td>
+          <td>{{ $data->jumlah_cicilan_dp }}</td>
+          <td>{{ $data->jumlah_cicilan_inhouse }}</td>
+          <td><img src="images/fc_ktp{{$data->fc_ktp}}"  height="80px"></td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 </div>

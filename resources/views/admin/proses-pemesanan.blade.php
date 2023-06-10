@@ -1,11 +1,9 @@
-@include('partials.navbar-admin-keuangan')
-
-@section('title', '- Proses Pemesanan')
-@section('isi')
+@extends('layout.template')
+@section('content')
  <!-- Begin Page Content -->
  <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800 text-center">Edit Pemesanan <?php echo $nama_cluster ?></h1>
+                    <h1 class="h3 mb-2 text-gray-800 text-center">Edit Pemesanan </h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 m-auto" style="width: 600px;">
                         <div class="card-body">

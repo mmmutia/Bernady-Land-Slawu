@@ -4,10 +4,6 @@
 @section('isi')
 
 <main id="main">
-
-
-<main id="main">
-
 <!-- ======= Our Portfolio Section ======= -->
 <section class="breadcrumbs">
   <div class="container">
@@ -29,7 +25,7 @@
     </div>
 
     <div class="col-lg-6">
-    <form action="portfolio.php" method="GET">
+    <form action="{{route('portofolio')}}" method="GET">
         <input type="text" name="cari">
         <input type="submit" value="Search">
         </form>
@@ -61,24 +57,19 @@
 
     <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-    <?php
-    while ($item = mysqli_fetch_array($query_mysql)){
-      ?>
-      <div class="col-lg-4 col-md-6 portfolio-wrap <?php echo $item['filter'];?>">
+        @foreach($portofolio as $gambar)
+      <div class="col-lg-4 col-md-6 portfolio-wrap {{ $gambar->foto_cluster }}">
         <div class="portfolio-item">
-          <img src="img/images_cluster/<?php echo $item['foto_cluster']; ?>" class="img-fluid" alt="">
+          <img src="images/{{$gambar->foto_cluster}}" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h3><?php echo $item['nama_cluster'];?></h3>
+            <h3>{{ $gambar->nama_cluster }}</h3>
             <div>
-              <a href="portofolio-details.php?id_cluster=<?= $item['id_cluster'];?>" title="Cluster Details"><i class="bx bx-link"></i></a>
-              <!-- <a href="portfolio-details-magnolia.php" title="Cluster Details"><i class="fa-regular fa-bookmark fa-xs"></i></a> -->
+              <a href="{{ route('portofolio-details', $gambar->id) }}" title="Cluster Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
       </div>
-      <?php
-    }
-    ?>
+      @endforeach
     </div>
 
   </div>

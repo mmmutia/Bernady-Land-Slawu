@@ -43,7 +43,6 @@
         <table class="table-bordered" style="width: 100%;">
           <thead>
             <tr>
-              <th>NO</th>
               <th>Id Pemesanan</th>
               <th>Nama Pemesan</th>
               <th>Status</th>
@@ -53,33 +52,35 @@
 
             </tr>
           </thead>
+          @foreach ($progres as $data)
           <tbody>
              <tr class="text-center">
-              <td><?php echo $no++?></td>
-              <td><?php echo $item['id_pemesanan'];?></td>
-              <td><?php echo $item['nama_pemesan'];?></td>
-              <td><?php echo $item['status'];?></td>
-              <td><?php echo $item['tanggal'];?></td>
+                <td>{{ $data->id }}</td>
+              <td>{{ $data->nama_pemesan }}</td>
+              <td>{{ $data->status }}</td>
+              <td>{{ $data->tanggal }}</td>
+              <td>{{ $data->keterangan }}</td>
               <td>
               <div class="align-items-center">
-      <button data-modal-target="#modal-keterangan<?php echo $item['id']?>" class="">Lihat Keterangan</button>
+      <button data-modal-target="#modal-keterangan {{ $data->id }}" class="">Lihat Keterangan</button>
 
 
       </div>
               </td>
-              <!-- <td><?php echo "<img src='./img/proggres/$item[foto]' width='70' height='90' />";?></td> -->
+              <img src="images/foto_progres{{$data->foto_progres}}" width='70' height='90' /></td>
               <td>
               <div class="align-items-center">
-      <button data-modal-target="#modal-foto<?php echo $item['id']?>" class="">Lihat Foto</button>
+      <button data-modal-target="#modal-foto {{ $data->id }}" class="">Lihat Foto</button>
 
 
       </div>
               </td>
             </tr>
+            @endforeach
 
                <!-- Pop up Delete -->
 
-               <div class="modal-delete" id="modal-delete<?= $item['id'] ?>">
+               <div class="modal-delete" id="modal-delete {{ $data->id }}">
                           <div class="modal-header-delete">
                             <h2 class="delete">Warning</h2>
                             <!-- <button data-close-delete class="close-btn-delete">&times;</button> -->
@@ -88,19 +89,19 @@
                               <div class="row">
 
                                 <p class="delete">
-                                  Yakin dek mau ngehapus data <?php echo $item['nama_pemesan'] ?> ?
+                                  Apakah anda yakin akan menghapus data {{ $data->nama_pemesan }}?
                                 </p>
 
                               </div>
                               <div></div>
                               <div></div>
-                              <form class="yayyay" action="proggres_user.php?id=<?= $item['id'] ?>" method="post">
+                              <form class="yayyay" action="{{route('progres', $data->id)}}" method="post">
                                 <div class="align-middle text-center">
                                   <button class="btn btn-success btn-sm ms-auto" type="submit" name="delete">Delete</button>
-                                  <!-- <a class="btn btn-success btn-sm ms-auto" href="users.view.php?id=<?= $row['id'] ?>">Delete</a> -->
+                                  <!-- <a class="btn btn-success btn-sm ms-auto" href="users.view.php?id={{ $data->id }}">Delete</a> -->
                                   <a href="proggres.php" class="btn btn-danger btn-sm ms-auto">Close</a>
                                   <!-- <button class="btn btn-success btn-sm ms-auto" name="submit" data-close-delete>Close</button> -->
-                                  <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_user.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                  <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_user.php?id={{ $data->id }}" data-close-delete>Close</button> -->
                               </form>
                             </div>
 
@@ -218,20 +219,20 @@
 
 
               <!-- Pop up Edit -->
-      <div class="modal-edit" id="modal-edit<?= $item['id'] ?>">
+      <div class="modal-edit" id="modal-edit {{ $data->id }}">
         <div class="modal-header-edit">
           <h2 class="edit">Edit Form</h2>
           <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
           <div class="modal-body-edit">
-            <form action="proggres_user.php?id=<?= $item['id'] ?>" method="post" enctype="multipart/form-data">
+            <form action="{{route('progres', $data->id)}}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Id Pemesanan</label>
 
 
                 <select class="form-control" name="id_pemesanan_edit" required>
-                <option value='<?php echo $item['id_pemesanan'];?>'><?php echo $item['id_pemesanan'];?> - <?php echo $item['nama_pemesan'];?></option>
+                <option value='{{ $data->id_pemesanan }}'>{{ $data->id_pemesanan }} - {{ $data->nama_pemesan }}</option>
 
 
                 </select>
@@ -243,7 +244,7 @@
 
 
                 <select class="form-control" name="status_edit" required>
-                <option value="<?php echo $item['status'];?>"><?php echo $item['status'];?></option>
+                <option value="{{ $data->status }}">{{ $data->status }}</option>
                 <option value="Selesai">Selesai</option>
                 <option value="Pengerjaan">Pengerjaan</option>
 
@@ -255,7 +256,7 @@
 
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Keterangan</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan_edit" placeholder="Enter Address" maxlength="500" rows="2"><?php echo $item['keterangan'];?></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan_edit" placeholder="Enter Address" maxlength="500" rows="2">{{ $data->keterangan }}</textarea>
               </div>
 
 
@@ -508,17 +509,17 @@
       <!-- end Pop up Foto -->
 
              <!-- Pop up Keterangan -->
-      <div class="modal-keterangan" id="modal-keterangan<?= $item['id'] ?>">
+      <div class="modal-keterangan" id="modal-keterangan {{ $data->id }}">
         <div class="modal-header-keterangan">
           <h2 class="keterangan">Keterangan</h2>
           <!-- <button data-close-add class="close-btn-add">&times;</button> -->
 
           <div class="modal-body-keterangan">
-            <form action="proggres_user.php" method="post" enctype="multipart/form-data">
+            <form action="/progres" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Keterangan</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="txt_alamat" placeholder="Enter Address" maxlength="500" rows="5"><?php echo $item['keterangan']?></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="txt_alamat" placeholder="Enter Address" maxlength="500" rows="5">{{ $data->keterangan }}</textarea>
               </div>
 
 

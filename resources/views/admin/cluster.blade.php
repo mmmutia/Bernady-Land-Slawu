@@ -24,27 +24,28 @@
                     @foreach($cluster as $data)
                     <tr>
                         <td>
-                            {{$data->nama_cluster}}          
+                            {{$data->nama_cluster}}
                         </td>
                         <td>
-                            {{$data->jumlah_unit}}          
+                            {{$data->jumlah_unit}}
                         </td>
                         <td>
-                            {{$data->blok}}          
+                            {{$data->blok}}
                         </td>
                         <td>
-                            {{$data->harga}}          
+                            {{$data->harga}}
                         </td>
                         <td>
-                            {{$data->filter}}          
+                            {{$data->filter}}
                         </td>
                         <td>
-                            {{$data->jenis_cluster}}          
+                            {{$data->jenis_cluster}}
                         </td>
                         <td>
-                            <img src="images/{{$data->foto_cluster}} " width="100px" height="100px" alt="" srcset="">          
+                            <img src="images/{{$data->foto_cluster}} " width="100px" height="100px" alt="" srcset="">
                         </td>
                         <td>
+                            <button><a href="{{route('tambahspek', $data->id)}}">Tambah</a></button>
                             <button><a href="{{route('editcluster', $data->id)}}">Edit</a></button>
                             <button>Delete</button>
                         </td>

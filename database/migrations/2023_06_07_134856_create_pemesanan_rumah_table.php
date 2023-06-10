@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_pemesan');
             $table->string('alamat');
             $table->string('no_telp');
+            $table->string('nama_cluster');
             $table->date('tgl_pemesanan');
             $table->string('fc_ktp');
             $table->string('jenis_pembayaran');

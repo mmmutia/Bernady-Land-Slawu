@@ -5,19 +5,18 @@
 
 <main id="main">
 
+    $cluster = Cluster::all();
 <!-- ======= Our Portfolio Section ======= -->
 <section class="breadcrumbs">
   <div class="container">
-
     <div class="d-flex justify-content-between align-items-center">
       <h2>Cluster Details</h2>
       <ol>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="portfolio.php">Cluster</a></li>
-        <li><?php echo $result['nama_cluster'] ?> Details</li>
+        <li><a href="/homeuser">Home</a></li>
+        <li><a href="/portofolio">Cluster</a></li>
+        <li>{{$cluster->nama_cluster}} Details</li>
       </ol>
     </div>
-
   </div>
 </section><!-- End Our Portfolio Section -->
 
@@ -32,15 +31,15 @@
           <div class="swiper-wrapper align-items-center">
 
             <div class="swiper-slide">
-              <img src="img/images_cluster/<?php echo $result['foto_cluster']; ?>" alt="">
+              <img src="images/{{$spek->foto_cluster}}" alt="">
             </div>
 
             <div class="swiper-slide">
-              <img src="img/images_cluster/<?php echo $result['foto_cluster']; ?>" alt="">
+              <img src="images/{{$spek->foto_cluster}}" alt="">
             </div>
 
             <div class="swiper-slide">
-              <img src="img/images_cluster/<?php echo $result['foto_cluster']; ?>" alt="">
+              <img src="images/{{$spek->foto_cluster}}" alt="">
             </div>
 
           </div>
@@ -50,26 +49,29 @@
 
 
       <div class="col-lg-4">
-        <form action="portofolio-details.php?id_cluster=<?= $_GET['id_cluster']?>&id_simpan=<?= $_GET['id_simpan'] ?>" method="post">
+        <form action="{{ route('portofolio-details', $spek->id)->$data->id }}" method="post">
           <div class="portfolio-info">
-            <h3><?php echo $result['nama_cluster'] ?></h3>
+            <h3>{{ $spek->nama_cluster }}</h3>
+            @foreach ($spek as $data)
             <ul>
-              <li><strong>Pondasi</strong>: <?php echo $result['pondasi'] ?></li>
-              <li><strong>Dinding</strong>: <?php echo $result['dinding'] ?></li>
-              <li><strong>Rangka Atap</strong>: <?php echo $result['rangka_atap'] ?></li>
-              <li><strong>Kusen</strong>: <?php echo $result['kusen'] ?></li>
-              <li><strong>Plafond</strong>: <?php echo $result['plafond'] ?></li>
-              <li><strong>Air</strong>: <?php echo $result['air'] ?></li>
-              <li><strong>Listrik </strong>: <?php echo $result['listrik'] ?></li>
-              <li><strong>Jumlah Kamar</strong>: <?php echo $result['jumlah_kamar'] ?></li>
-              <li><strong>Luas Tanah</strong>: <?php echo $result['luas_tanah'] ?></li>
-              <li><strong>Jenis Cluster</strong>: <?php echo $result['jenis_cluster'] ?></li>
+              <li><strong>Pondasi</strong>: {{ $data->pondasi }}</li>
+              <li><strong>Dinding</strong>: {{ $data->dinding }}</li>
+              <li><strong>Rangka Atap</strong>: {{ $data->rangka_atap }}</li>
+              <li><strong>Kusen</strong>: {{ $data->kusen }}</li>
+              <li><strong>Plafond</strong>: {{ $data->plafond }}</li>
+              <li><strong>Air</strong>: {{ $data->air }}</li>
+              <li><strong>Listrik </strong>: {{ $data->listrik }}</li>
+              <li><strong>Jumlah Kamar</strong>: {{ $data->jumlah_kamar }}</li>
+              <li><strong>Luas Tanah</strong>: {{ $data->luas_tanah }}</li>
+              <li><strong>Jenis Cluster</strong>: {{ $data->jenis_cluster }}</li>
               <div class="portfolio-description">
             <h2>Harga : <?php echo $result['harga'] ?></h2>
           </div>
               <a href="pemesanan.php"><button type="button" class="btn btn-secondary">Pesan Rumah Ini</button></a>
               <button type="submit" name="simpan" class="btn btn-dark">Simpan</button>
             </ul>
+
+            @endforeach
           </div>
         </form>
       </div>
